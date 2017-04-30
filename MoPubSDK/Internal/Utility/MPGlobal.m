@@ -22,19 +22,19 @@ NSString *MPSHA1Digest(NSString *string);
 
 UIInterfaceOrientation MPInterfaceOrientation()
 {
-    return [UIApplication sharedApplication].statusBarOrientation;
+    return UIInterfaceOrientationPortrait;//[UIApplication sharedApplication].statusBarOrientation;
 }
 
 UIWindow *MPKeyWindow()
 {
-    return [UIApplication sharedApplication].keyWindow;
+    return nil;//[UIApplication sharedApplication].keyWindow;
 }
 
 CGFloat MPStatusBarHeight() {
-    if ([UIApplication sharedApplication].statusBarHidden) return 0.0f;
+    //if ([UIApplication sharedApplication].statusBarHidden) return 0.0f;
 
-    CGFloat width = CGRectGetWidth([UIApplication sharedApplication].statusBarFrame);
-    CGFloat height = CGRectGetHeight([UIApplication sharedApplication].statusBarFrame);
+    CGFloat width = [UIScreen mainScreen].bounds.size.width;
+    CGFloat height = 20.0;//CGRectGetHeight([UIApplication sharedApplication].statusBarFrame);
 
     return (width < height) ? width : height;
 }
@@ -263,7 +263,7 @@ NSArray *MPConvertStringArrayToURLArray(NSArray *strArray)
     // Displaying the status bar should use no animation.
     UIStatusBarAnimation animation = hidden ?
     UIStatusBarAnimationFade : UIStatusBarAnimationNone;
-    [[UIApplication sharedApplication] setStatusBarHidden:hidden withAnimation:animation];
+    //[[UIApplication sharedApplication] setStatusBarHidden:hidden withAnimation:animation];
 }
 
 - (BOOL)mp_supportsOrientationMask:(UIInterfaceOrientationMask)orientationMask
@@ -356,11 +356,11 @@ NSArray *MPConvertStringArrayToURLArray(NSArray *strArray)
             }
         }
 
-        _alertView = [[UIAlertView alloc] initWithTitle: @"Are you sure you want to call?"
+      _alertView = nil;/*[[UIAlertView alloc] initWithTitle: @"Are you sure you want to call?"
                                                 message:phoneNumber
                                                delegate:self
                                       cancelButtonTitle:@"Cancel"
-                                      otherButtonTitles:@"Call", nil];
+                                      otherButtonTitles:@"Call", nil];*/
         self.clickHandler = clickHandler;
 
         // We want to manually handle telPrompt scheme alerts.  So we'll convert telPrompt schemes to tel schemes.

@@ -716,9 +716,9 @@ static NSString *const kMRAIDCommandResize = @"resize";
 - (void)bridge:(MRBridge *)bridge handleNativeCommandSetOrientationPropertiesWithForceOrientationMask:(UIInterfaceOrientationMask)forceOrientationMask
 {
     // If the ad is trying to force an orientation that the app doesn't support, we shouldn't try to force the orientation.
-    if (![[UIApplication sharedApplication] mp_supportsOrientationMask:forceOrientationMask]) {
-        return;
-    }
+//    if (![[UIApplication sharedApplication] mp_supportsOrientationMask:forceOrientationMask]) {
+//        return;
+//    }
 
     BOOL inExpandedState = self.currentState == MRAdViewStateExpanded;
 
@@ -741,7 +741,7 @@ static NSString *const kMRAIDCommandResize = @"resize";
     self.forceOrientationAfterAnimationBlock = nil;
     self.forceOrientationMask = forceOrientationMask;
 
-    BOOL inSameOrientation = [[UIApplication sharedApplication] mp_doesOrientation:MPInterfaceOrientation() matchOrientationMask:forceOrientationMask];
+    BOOL inSameOrientation = YES;//[[UIApplication sharedApplication] mp_doesOrientation:MPInterfaceOrientation() matchOrientationMask:forceOrientationMask];
     UIViewController <MPForceableOrientationProtocol> *fullScreenAdViewController = inExpandedState ? self.expandModalViewController : self.interstitialViewController;
 
     // If we're currently in the force orientation, we don't need to do any rotation.  However, we still need to make sure
@@ -1079,8 +1079,8 @@ static NSString *const kMRAIDCommandResize = @"resize";
 
 - (void)checkViewability
 {
-    BOOL viewable = MPViewIsVisible([self activeView]) &&
-        ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive);
+  BOOL viewable = MPViewIsVisible([self activeView]);// &&
+        //([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive);
     [self updateViewabilityWithBool:viewable];
 }
 

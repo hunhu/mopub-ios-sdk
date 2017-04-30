@@ -56,7 +56,7 @@ static NSString * const kCloseButtonXImageName = @"MPCloseButtonX.png";
 
     [self willPresentInterstitial];
 
-    self.applicationHasStatusBar = !([UIApplication sharedApplication].isStatusBarHidden);
+    self.applicationHasStatusBar = YES;//!([UIApplication sharedApplication].isStatusBarHidden);
     [self setApplicationStatusBarHidden:YES];
 
     [self layoutCloseButton];
@@ -179,7 +179,7 @@ static NSString * const kCloseButtonXImageName = @"MPCloseButtonX.png";
 
 - (void)setApplicationStatusBarHidden:(BOOL)hidden
 {
-    [[UIApplication sharedApplication] mp_preIOS7setApplicationStatusBarHidden:hidden];
+    //[[UIApplication sharedApplication] mp_preIOS7setApplicationStatusBarHidden:hidden];
 }
 
 #pragma mark - Hidding status bar (iOS 7 and above)
@@ -203,8 +203,8 @@ static NSString * const kCloseButtonXImageName = @"MPCloseButtonX.png";
 - (NSUInteger)supportedInterfaceOrientations
 #endif
 {
-    NSUInteger applicationSupportedOrientations =
-    [[UIApplication sharedApplication] supportedInterfaceOrientationsForWindow:MPKeyWindow()];
+    NSUInteger applicationSupportedOrientations = UIInterfaceOrientationMaskAll;
+    //[[UIApplication sharedApplication] supportedInterfaceOrientationsForWindow:MPKeyWindow()];
     NSUInteger interstitialSupportedOrientations = applicationSupportedOrientations;
     NSString *orientationDescription = @"any";
 

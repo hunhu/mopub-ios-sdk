@@ -306,7 +306,7 @@
 
 - (void)forceRedraw
 {
-    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+    UIInterfaceOrientation orientation = UIInterfaceOrientationPortrait;//[[UIApplication sharedApplication] statusBarOrientation];
     int angle = -1;
     switch (orientation) {
         case UIInterfaceOrientationPortrait: angle = 0; break;

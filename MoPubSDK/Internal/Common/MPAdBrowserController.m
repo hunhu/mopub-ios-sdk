@@ -199,11 +199,11 @@ static NSString * const kAdBrowserControllerNibName = @"MPAdBrowserController";
     if (self.actionSheet) {
         [self dismissActionSheet];
     } else {
-        self.actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+        /*self.actionSheet = [[UIActionSheet alloc] initWithTitle:nil
                                                        delegate:self
                                               cancelButtonTitle:@"Cancel"
                                          destructiveButtonTitle:nil
-                                              otherButtonTitles:@"Open in Safari", nil];
+                                              otherButtonTitles:@"Open in Safari", nil];*/
 
         if ([UIActionSheet instancesRespondToSelector:@selector(showFromBarButtonItem:animated:)]) {
             [self.actionSheet showFromBarButtonItem:self.safariButton animated:YES];
@@ -227,7 +227,7 @@ static NSString * const kAdBrowserControllerNibName = @"MPAdBrowserController";
     self.actionSheet = nil;
     if (buttonIndex == 0) {
         // Open in Safari.
-        [[UIApplication sharedApplication] openURL:self.URL];
+        //[[UIApplication sharedApplication] openURL:self.URL];
     }
 }
 
@@ -244,7 +244,7 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
     BOOL appShouldOpenURL = ![self.URL.scheme isEqualToString:@"http"] && ![self.URL.scheme isEqualToString:@"https"];
 
     if (appShouldOpenURL) {
-        [[UIApplication sharedApplication] openURL:self.URL];
+        //[[UIApplication sharedApplication] openURL:self.URL];
     }
 
     return !appShouldOpenURL;

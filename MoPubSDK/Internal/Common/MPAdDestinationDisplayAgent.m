@@ -164,7 +164,7 @@ static NSString * const kDisplayAgentErrorDomain = @"com.mopub.displayagent";
 
 - (void)handleEnhancedDeeplinkRequest:(MPEnhancedDeeplinkRequest *)request
 {
-    BOOL didOpenSuccessfully = [[UIApplication sharedApplication] openURL:request.primaryURL];
+    BOOL didOpenSuccessfully = NO;//[[UIApplication sharedApplication] openURL:request.primaryURL];
     if (didOpenSuccessfully) {
         [self hideOverlay];
         [self.delegate displayAgentWillLeaveApplication];
@@ -239,7 +239,7 @@ static NSString * const kDisplayAgentErrorDomain = @"com.mopub.displayagent";
     if ([URL mp_hasTelephoneScheme] || [URL mp_hasTelephonePromptScheme]) {
         [self interceptTelephoneURL:URL];
     } else {
-        BOOL didOpenSuccessfully = [[UIApplication sharedApplication] openURL:URL];
+        BOOL didOpenSuccessfully = NO;//[[UIApplication sharedApplication] openURL:URL];
         if (didOpenSuccessfully) {
             [self.delegate displayAgentWillLeaveApplication];
         }
@@ -268,7 +268,7 @@ static NSString * const kDisplayAgentErrorDomain = @"com.mopub.displayagent";
         if (strongSelf) {
             if (confirmed) {
                 [strongSelf.delegate displayAgentWillLeaveApplication];
-                [[UIApplication sharedApplication] openURL:targetTelephoneURL];
+                //[[UIApplication sharedApplication] openURL:targetTelephoneURL];
             }
             [strongSelf completeDestinationLoading];
         }

@@ -149,7 +149,7 @@ static UIView *gOffscreenView = nil;
     UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
     view.clipsToBounds = YES;
 
-    UIWindow *appWindow = [[UIApplication sharedApplication] keyWindow];
+    UIWindow *appWindow = nil;//[[UIApplication sharedApplication] keyWindow];
     [appWindow addSubview:view];
 
     return view;
